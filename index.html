@@ -17,7 +17,8 @@
                         type: "POST",
                         url: "show-processes.php",
                         data: {
-                            key: $("#key").val()
+                            key: $("#key").val(),
+                            case: $("#case").val()
                         },
                         success: function(result) {
                             document.getElementById("processes").innerHTML = result                        
@@ -38,6 +39,10 @@
         <div class="search">
             <p>
                 Search: <input type="text" id="key"><br>
+                <select id="case">
+                        <option value="case-sensitive" selected>case-sensitive</option>
+                        <option value="ignore-case">ignore-case</option>
+                </select> 
             </p>
             <button type="button" id="search_btn">Search!</button> 
         <div>
