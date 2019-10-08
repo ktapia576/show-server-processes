@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Processes Webpage</title>
+        <link rel="stylesheet" href="index.css">
+        <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet"> <!-- Font Family-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#search_btn').click(function(e){
+                    e.preventDefault();
+                    $.ajax({
+                        type: "GET",
+                        url: "show-processes.php",
+                        data: {
+                            key: $("#key").val()
+                        },
+                        success: function(result) {
+                            document.getElementById("processes").innerHTML = result                        
+                        },
+                        error: function(result) {
+                            alert(result);
+                        }
+                    });
+                });
+            });
+           
+        </script>
+    </head>
+
+    <body>
+        <h1>Enter a key to search for a process running on Eve</h1>
+
+        <div class="search">
+            <p>
+                Search: <input type="text" id="key"><br>
+            </p>
+            <button type="button" id="search_btn">Search!</button> 
+        <div>
+
+        <p id="processes">
+
+        </p>
+    </body>
+</html>
