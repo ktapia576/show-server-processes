@@ -14,7 +14,7 @@
                 $('#search_btn').click(function(e){
                     e.preventDefault();
                     $.ajax({
-                        type: "GET",
+                        type: "POST",
                         url: "show-processes.php",
                         data: {
                             key: $("#key").val()
@@ -42,8 +42,8 @@
             <button type="button" id="search_btn">Search!</button> 
         <div>
 
-        <p id="processes">
-
-        </p>
+        <div class="processes">
+            <p id="processes"></p>
+        </div>
     </body>
 </html>
