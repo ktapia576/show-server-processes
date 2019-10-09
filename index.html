@@ -7,7 +7,7 @@
         <title>Processes Webpage</title>
         <link rel="stylesheet" href="index.css">
         <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet"> <!-- Font Family-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    <!-- Add JQuery -->
 
         <script type="text/javascript">
             $(document).ready(function(){
@@ -18,18 +18,20 @@
                         url: "show-processes.php",
                         data: {
                             key: $("#key").val(),
-                            case: $("#case").val()
+                            case: $("#case").val(),
+                            invert: $('#invert').val()
                         },
                         success: function(result) {
-                            document.getElementById("processes").innerHTML = result                        
+                            var output=JSON.parse(result);  // Parse JSON passed from php
+                            document.getElementById("processes").innerHTML = output.result;
+                            document.getElementById("command").innerHTML = output.command;
                         },
                         error: function(result) {
                             alert(result);
                         }
                     });
                 });
-            });
-           
+            });      
         </script>
     </head>
 
@@ -40,14 +42,19 @@
             <p>
                 Search: <input type="text" id="key"><br>
                 <select id="case">
-                        <option value="case-sensitive" selected>case-sensitive</option>
-                        <option value="ignore-case">ignore-case</option>
+                        <option value="true" selected>case-sensitive</option>
+                        <option value="false">ignore-case</option>
+                </select> 
+                <select id="invert">
+                        <option value="false" selected>no-invert</option>
+                        <option value="true">invert</option>
                 </select> 
             </p>
             <button type="button" id="search_btn">Search!</button> 
         <div>
 
         <div class="processes">
+            <p id="command"></p>
             <p id="processes"></p>
         </div>
     </body>
