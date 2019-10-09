@@ -12,7 +12,7 @@
         <script type="text/javascript">
             $(document).ready(function(){
                 $('#search_btn').click(function(e){
-                    e.preventDefault();
+                    e.preventDefault(); // default action of an element from happening
                     $.ajax({
                         type: "POST",
                         url: "show-processes.php",
