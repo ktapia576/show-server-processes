@@ -1,4 +1,13 @@
 body {
-    margin: 0vw;
+    margin: auto;
+    max-width: 85vw;
     font-family: 'Nunito', sans-serif;
-  }
+}
+
+* {
+    text-align: center;
+}
+
+#command {
+    font-weight: bold;
+}
