@@ -8,7 +8,7 @@
         $case_sensitive=filter_var($case_sensitive, FILTER_VALIDATE_BOOLEAN); 
         $invert=filter_var($invert, FILTER_VALIDATE_BOOLEAN);
 
-        $command = "ps | grep ";    // Will always use this command
+        $command = "ps -A | grep ";    // Will always use this command
         $options ="";    // Options will be selected by User
 
         // Check if command is case sensitive
@@ -29,8 +29,14 @@
             $output="Error: Problem with choosing case sensitivity";
         }
 
-        $command = $command.$options.$key;  // Concatenate command
-        $output = shell_exec($command); // Execute command in shell
+        //Check if user entered *
+        if($key === "*" || $key === ""){
+            $command = "ps -A";    
+            $output = shell_exec("ps -A"); // Show all processes
+        }else{   
+            $command = $command.$options.$key;  // Concatenate command
+            $output = shell_exec($command); // Execute command in shell
+        }
         
         //nl2br() inbuilt function in PHP and is used to insert HTML break tags in the place of all new lines in a string
         echo json_encode(array("result" => nl2br($output), "command" => $command)); 

@@ -11,3 +11,8 @@ body {
 #command {
     font-weight: bold;
 }
+
+#processes {
+    overflow:auto;
+    max-height: 50vh;
+}
