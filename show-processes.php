@@ -31,7 +31,8 @@
 
         $command = $command.$options.$key;  // Concatenate command
         $output = shell_exec($command); // Execute command in shell
-        //echo nl2br($output);
+        
+        //nl2br() inbuilt function in PHP and is used to insert HTML break tags in the place of all new lines in a string
         echo json_encode(array("result" => nl2br($output), "command" => $command)); 
     } else {
         echo "You cant access this webpage separately";
