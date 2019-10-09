@@ -26,7 +26,7 @@
         } elseif(!$invert){      
             $options=$options."";
         } else {
-            $output="Error: Problem with choosing case sensitivity";
+            $output="Error: Problem with choosing invert matching";
         }
 
         //Check if user entered *
